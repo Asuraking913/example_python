@@ -19,10 +19,10 @@ def run_cmd():
     file_list = listdir(file_path)
     
     def run_commit2(message):
-        return system(f"{message}")
+        return system(f"git commit -m {message}")
     
     def run_url(url):
-        return system(f"{url}")
+        return system(f"git remote add origin {url}")
 
     if ".git" in file_list:
         run_add()
@@ -31,11 +31,10 @@ def run_cmd():
     else:
         run_init()
         run_add()
-        message = input("Enter your git message")
-        run_commit2()
+        message = input("Enter your git message: ")
+        run_commit2(str(message))
         url = input("Enter your remote url: ")
-        run_url(url)
-
+        run_url(str(url))
         run_push()
 
 
