@@ -1,41 +1,33 @@
-from os import system
-from os import getcwd
-from os import listdir
+import os
 
-def run_commit1():
-    return system("git commit -m 'new changes'")
+def git_commit():
+    commit_m = input("Enter commit message: ")
+    return os.system(f"git commit -m '{commit_m}'")
 
-def run_push():
-    return system("git push origin master")
+def git_add(): 
+    return os.system("git add .")
 
-def run_add ():
-    return system("git add .")
+def git_push(): 
+    return os.system("git push origin master")
 
-def run_init():
-    return system("git init")
+def git_add_url():
+    url = input("Enter git url: ")
+    return os.system(f"git remote add origin {url}")
 
-def run_cmd():
-    file_path = getcwd()
-    file_list = listdir(file_path)
-    
-    def run_commit2(message):
-        return system(f"git commit -m {message}")
-    
-    def run_url(url):
-        return system(f"git remote add origin {url}")
+def git_init():
+    return os.system("git init")
 
-    if ".git" in file_list:
-        run_add()
-        run_commit1()
-        run_push()
-    else:
-        run_init()
-        run_add()
-        message = input("Enter your git message: ")
-        run_commit2(str(message))
-        url = input("Enter your remote url: ")
-        run_url(str(url))
-        run_push()
+file_list = os.listdir()
+
+if ".git" in file_list:
+    git_add()
+    git_commit()
+    git_push()
+else:
+    git_init()
+    git_add()
+    git_commit()
+    git_add_url()
+    git_push()
 
 
-run_cmd()
