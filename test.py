@@ -1,17 +1,21 @@
 import os
+import client
 
-content = os.walk("/home/asura/Desktop/codeverse/python/Transfer_app/version2/GTA San Andreas")
+content = os.walk("/home/asura/Desktop/codeverse/python/example_python/new2")
 list_tree = list(content)
 # print(list_tree)
 
 # for n in range(len(list_tree)):
 #     print(list_tree[n])
 
-# print(list_tree[0])
-# print(list_tree[1])
-# print(list_tree[2])
+for dir, folder_list, files_list in list_tree:
+    for files in files_list:
+        client.send_file(f'{dir}/{files}', str(len(list_tree)))
 
-for dir, folder, files in list_tree:
-    print(dir)
-    print(folder)
-    print(files)
+
+# client.send_file("/home/asura/Desktop/codeverse/python/example_python/new2/distsdf/sdf/sa.txt")
+
+# for dir, folder, files in list_tree:
+#     print(dir)
+#     print(folder)
+#     print(files)
