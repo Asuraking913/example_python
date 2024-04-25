@@ -2,7 +2,7 @@ import socket
 import os
 import tqdm
 
-def send_file(file_path, len_files):
+def send_file(file_path, len_list):
     host = socket.gethostbyname(socket.gethostname())
     port = 9999
 
@@ -17,12 +17,12 @@ def send_file(file_path, len_files):
     conn_message = "Connection Initated"
     end_message = "Connection Ended"
     try:
-        client.send((conn_message + '\n' + file_name + '\n' + str(file_size) + '\n' + end_message + '\n' + len_files).encode())
+        client.send((conn_message + '\n' + file_name + '\n' + str(file_size) + '\n' + end_message + '\n' + str(len(len_list))).encode())
     except BrokenPipeError:
         pass
 
     progress = tqdm.tqdm(unit="MB", unit_scale=True, unit_divisor=1024, 
-                        total=int(file_size))
+                        total=int(file_size), colour="red")
 
     with open(file_path, 'rb') as file:
         while True:
@@ -35,7 +35,6 @@ def send_file(file_path, len_files):
                     print(f"Error: {e}")
                     pass
             else:
-                client.send('end'.encode())
                 break
     client.close()
 
