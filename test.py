@@ -1,21 +1,43 @@
-import os
-import client
+# import os
 
-content = os.walk("/home/asura/Desktop/codeverse/python/example_python/new2")
-list_tree = list(content)
-# print(list_tree)
+# def get_folder_size(folder_path):
+#     total_size = 0
+#     for dirpath, dirnames, filenames in os.walk(folder_path):
+#         for filename in filenames:
+#             file_path = os.path.join(dirpath, filename)
+#             total_size += os.path.getsize(file_path)
+#     return total_size
 
-# for n in range(len(list_tree)):
-#     print(list_tree[n])
+# folder_path = '/home/asura/Desktop/codeverse/python/Transfer_app/GTA San Andreas'
+# folder_size_bytes = get_folder_size(folder_path)
 
-for dir, folder_list, files_list in list_tree:
-    for files in files_list:
-        client.send_file(f'{dir}/{files}', len(list_tree))
+# # Convert bytes to MB or GB for readability
+# folder_size_mb = folder_size_bytes / (1024 * 1024)
+# folder_size_gb = folder_size_bytes / (1024 * 1024 * 1024)
 
-# print(list_tree)
-# client.send_file("/home/asura/Desktop/codeverse/python/example_python/new2/distsdf/sdf/sa.txt")
+# print(f"Total size of folder '{folder_path}':")
+# print(f"{folder_size_bytes} bytes")
+# print(f"{folder_size_mb:.2f} MB")
+# print(f"{folder_size_gb:.2f} GB")
 
-# for dir, folder, files in list_tree:
-#     print(dir)
-#     print(folder)
-#     print(files)
+
+from tqdm import tqdm
+import time
+
+
+import time
+from tqdm import tqdm
+
+import time
+from tqdm import tqdm
+
+def my_function():
+    a = 0
+    for _ in tqdm(range(100000), desc="Processing", unit="iteration"):
+        a += 1
+        # Simulate some computation
+        time.sleep(0.00001)
+
+my_function()
+
+
